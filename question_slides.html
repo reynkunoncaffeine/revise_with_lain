@@ -64,6 +64,21 @@
             padding: 10px;
             border-radius: 20px 20px 0px 0px;
         }
+        .Next {
+            display: none;
+            text-align: center;
+            
+            
+            border: solid 1px ;
+            border-radius: 2px;
+            width: 20%;
+            margin: 1% auto;
+            padding: 1%;
+            opacity: 0;
+            transition: 0.5s;
+            cursor: pointer;
+            background: transparent;
+        }
     </style>
 </head>
 <body>
@@ -77,15 +92,25 @@
             <div class="sub">B:</div>
             <div class="sub">C:</div>
             <div class="sub">D:</div>
-            
+               
+        </div>
+        <div>
+            <button class="Next">Next</button>
         </div>
     </div>
+    
+
     <script>
         const optn=document.querySelectorAll('.sub');
+        const nextbtn=document.querySelector('.Next');
+
         optn.forEach(opt =>{
             opt.addEventListener('click',() =>{
                 optn.forEach(o => o.style.background="rgba(0,0,0,0.4)");
                 opt.style.background="green"
+
+                nextbtn.style.display="block";
+                
             });
         }
         );
