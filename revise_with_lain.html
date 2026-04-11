@@ -79,10 +79,8 @@
             
             subjects.forEach(sub => {
                 sub.addEventListener('click', () => {
-                    const subject = sub.innerText;
-            
-                    
-                    window.location.href = 'qstn_slides.html?subject='+subject;
+                    const subject = sub.textContent;
+                    window.location.href = 'qstn_slides.html?subject=' + subject;
                 });
             });
     </script>
