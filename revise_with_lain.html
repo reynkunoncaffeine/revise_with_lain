@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <title>Revise With Lain</title>
     <style>
         body {
-            background-image: url(https://preview.redd.it/how-would-lains-room-look-like-with-todays-technology-v0-2fj6i18hpzm81.jpg?width=1080&crop=smart&auto=webp&s=5f9c787a80b7daea5e7469ede4494f2c6b133f55);
+            background-image: url(https://i.pinimg.com/originals/f0/83/f6/f083f63dfcf3bde7060e4e007311f67f.gif);
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -13,11 +16,12 @@
         }
         .con {
             margin: 150px auto;
-            background: rgba(255, 255, 255, 0.001);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(3px);
             align-items: center;
             text-align: center;
             width: 70%;
+            border-radius: 15px;
         }
         .sub {
             border: solid 1px white;
@@ -31,14 +35,16 @@
             text-decoration: none;
         }
         .sub:hover{
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
             cursor: pointer;
             transform: scale(1.03);
-            transition: 0.3s;   
+            transition: 0.3s;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.3); 
         }
         .avatar {
-            width: 90px;
             padding: 5%;
+            
         }
         .bubble {
             width: 70%;
@@ -57,14 +63,18 @@
             justify-content: center;
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
+            border-radius: 15px 15px 0 0;
+            font-family: 'Special Elite', system-ui;
         }
     </style>
 </head>
 <body>
     <div class="con">
         <div class="header">
-            <div class="avatar"><img src="https://preview.redd.it/which-pic-to-set-as-a-pfp-v0-k9bmnxdeh28e1.jpg?width=1080&crop=smart&auto=webp&s=8cc56d4638874cc8336d8072f0d300cb95c0b286" alt="lain" width="90px" style="border-radius: 50%;"></div>
-            <div class="bubble">welcome to the wired. choose a subject to start the quiz</div>
+            <!--
+            <div class="avatar"><img src="https://tr.rbxcdn.com/180DAY-cd19155237a0febe0c0ef68c48b058a4/420/420/FaceAccessory/Webp/noFilter" alt="lain" width="90px" style="border-radius: 50%;"></div>
+            -->
+            <div class="bubble"><p>welcome to the wired.</p><p>choose a subject to start the quiz</p></div>
         </div>
         <div class="subcon">
             <a href="qstn_slides.html?subject=OS"><div class="sub">OS</div></a>
