@@ -26,6 +26,16 @@
             margin: 1% auto;
             padding: 1%;
         }
+        a{
+            color: white;
+            text-decoration: none;
+        }
+        .sub:hover{
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transform: scale(1.03);
+            transition: 0.3s;   
+        }
         .avatar {
             width: 90px;
             padding: 5%;
@@ -36,8 +46,7 @@
             color: white;
         }
         .subcon {
-            display: flex;
-            flex-direction: column;
+            
             align-items: center;
             padding: 5%;
         }
@@ -58,12 +67,24 @@
             <div class="bubble">welcome to the wired. choose a subject to start the quiz</div>
         </div>
         <div class="subcon">
-            <div class="sub">OS</div>
-            <div class="sub">DSA</div>
-            <div class="sub">PYTHON</div>
-            <div class="sub">JAVA</div>
-            <div class="sub">PHYSICS</div>
+            <a href="qstn_slides.html?subject=OS"><div class="sub">OS</div></a>
+<a href="qstn_slides.html?subject=DSA"><div class="sub">DSA</div></a>
+<a href="qstn_slides.html?subject=PYTHON"><div class="sub">PYTHON</div></a>
+<a href="qstn_slides.html?subject=JAVA"><div class="sub">JAVA</div></a>
+<a href="qstn_slides.html?subject=PHYSICS"><div class="sub">PHYSICS</div></a>
         </div>
     </div>
+    <script>
+const subjects = document.querySelectorAll('.sub');
+
+subjects.forEach(sub => {
+    sub.addEventListener('click', () => {
+        const subject = sub.innerText;
+
+        
+        window.location.href = 'qstn_slides.html?subject'=subject;
+    });
+});
+</script>
 </body>
 </html>
