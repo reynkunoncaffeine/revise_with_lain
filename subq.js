@@ -75,7 +75,7 @@ const qstn = {
     }
   ],
 
-  // --- NEWLY ADDED SUBJECTS ---
+  
   PYTHON: [
     {
       id: 1,
