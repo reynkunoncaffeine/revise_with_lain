@@ -13,7 +13,7 @@
         }
         .con {
             margin: 150px auto;
-            background: rgba(255, 255, 255, 0.1);
+            
             backdrop-filter: blur(10px);
             align-items: center;
             text-align: center;
@@ -103,13 +103,27 @@
     </div>
     
 
-    <script>
-        const optn=document.querySelectorAll('.sub');
+    <script src="subq.js"></script>
+     <script>
+        const params=new URLSearchParams(window.location.search);
+        const subject=params.get("subject");
+        let questions=qstn[subject];
+        let current=0;
+        let score=0;
+        let answered=false;
+
+        const qstnbox=document.querySelector('.bubble');
+        const options=document.querySelectorAll('.sub');
         const nextbtn=document.querySelector('.Next');
 
-        optn.forEach(opt =>{
+        function loadquestion(){
+            let q=questions[current];
+            qstnbox.textContent=q.q;
+
+        }
+        options.forEach(opt =>{
             opt.addEventListener('click',() =>{
-                optn.forEach(o => o.style.background="rgba(0,0,0,0.4)");
+                options.forEach(o => o.style.background="rgba(0,0,0,0.4)");
                 opt.style.background="green"
 
                 nextbtn.style.display="block";
@@ -117,6 +131,10 @@
             });
         }
         );
+        loadquestion();
+
+
     </script>
+    
 </body>
 </html>
