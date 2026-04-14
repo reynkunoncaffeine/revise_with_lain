@@ -120,6 +120,11 @@
             let q=questions[current];
             qstnbox.textContent=q.q;
 
+            options.forEach((opt,index)=>{
+                opt.textContent=q.options[index];
+                
+            });
+
         }
         options.forEach(opt =>{
             opt.addEventListener('click',() =>{
