@@ -13,7 +13,7 @@
         }
         .con {
             margin: 150px auto;
-            
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             align-items: center;
             text-align: center;
@@ -28,6 +28,122 @@
             margin: 1% auto;
             padding: 1%;
             text-align:left;
+            color: white;
+            
+        }
+        .sub:hover{
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            cursor: pointer;
+            transform: scale(1.03);
+            transition: 0.3s;   
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+        }
+        .avatar {
+            width: 90px;
+            padding: 5%;
+        }
+        .bubble {
+            width: 70%;
+            font-size: 1.8em;
+            color: white;
+            padding:10px;
+            font-weight:bold;
+        }
+        .subcon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5%;
+            
+        }
+        .header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px;
+            border-radius: 15px 15px 0px 0px;
+        }
+        .Next {
+            display: none;
+            text-align: center;
+            
+            
+            border: solid 1px ;
+            border-radius: 2px;
+            width: 20%;
+            margin: 1% auto;
+            padding: 1%;
+            opacity: 0;
+            transition: 0.5s;
+            cursor: pointer;
+            background: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="con">
+        <div class="header">
+            <div class="avatar"><img src="https://i.pinimg.com/originals/8f/c9/69/8fc969bacc4ccce997830e75773f7cf4.jpg" alt="lain" width="90px" style="border-radius: 50%;"></div>
+            <div class="bubble">Question</div>
+        </div>
+        <div class="subcon">
+            <div class="sub">A:</div>
+            <div class="sub">B:</div>
+            <div class="sub">C:</div>
+            <div class="sub">D:</div>
+               
+        </div>
+        <div>
+            <button class="Next">Next</button>
+        </div>
+    </div>
+    
+
+    <script src="subq.js"></script>
+     <script>
+        const params=new URLSearchParams(window.location.search);
+        const subject=params.get("subject");
+        let questions=qstn[subject];
+        let current=0;
+        let score=0;
+        let answered=false;
+
+        const qstnbox=document.querySelector('.bubble');
+        const options=document.querySelectorAll('.sub');
+        const nextbtn=document.querySelector('.Next');
+
+        function loadquestion(){
+            let q=questions[current];
+            qstnbox.textContent=q.q;
+
+            options.forEach((opt,index)=>{
+                opt.textContent=q.options[index];
+                
+            });
+            
+
+        }
+        options.forEach(opt =>{
+            opt.addEventListener('click',() =>{
+                options.forEach(o => o.style.background="rgba(0,0,0,0.4)");
+                opt.style.background="green"
+
+                nextbtn.style.display="block";
+                nextbtn.style.opacity="1";
+            });
+        }
+        );
+        loadquestion();
+
+
+    </script>
+    
+</body>
+</html>
             color: white;
             
         }
