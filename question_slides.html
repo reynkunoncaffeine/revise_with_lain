@@ -134,21 +134,51 @@
 
             options.forEach((opt,index)=>{
                 opt.textContent=q.options[index];
+                opt.style.background="transparent";
+                opt.style.pointerEvents="auto";
                 
             });
-            
+            answered=false;
 
         }
-        options.forEach(opt =>{
+        options.forEach((opt,index) =>{
             opt.addEventListener('click',() =>{
-                options.forEach(o => o.style.background="rgba(0,0,0,0.4)");
+                /*options.forEach(o => o.style.background="rgba(0,0,0,0.4)");
                 opt.style.background="green"
 
                 nextbtn.style.display="block";
+                nextbtn.style.opacity="1";*/
+
+                if(answered) return;
+                answered=true;
+
+                options.forEach(o => o.style.pointerEvents ="none");
+
+                if(index=== questions[current].ans){
+                    opt.style.background="green";
+                    score++;
+                }
+                else{
+                    opt.style.background="red";
+                    options[questions[current].ans].style.background="green";
+                }
+
+                
+                nextbtn.style.display="block";
                 nextbtn.style.opacity="1";
+                
+
             });
-        }
-        );
+        });
+        nextbtn.addEventListener('click',()=>{
+            current++;
+            if(current<questions.length){
+                loadquestion();
+            }
+            else{
+                
+            }
+        });
         loadquestion();
 
 
