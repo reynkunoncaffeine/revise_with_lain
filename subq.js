@@ -39,8 +39,63 @@ const qstn = {
         "Multilevel Queue"
       ],
       ans: 2
-    }
-  ],
+    },
+    {
+ id: 6,
+ q: "The "Belady's Anomaly" is associated with which page replacement algorithm?",
+ options: [
+      "LRU",
+      "Optimal"
+      "FIFO"
+      "LFU"
+ ],
+ ans: 3
+},
+{
+ id: 7,
+ q: "Which part of the Operating System is responsible for interacting directly with the hardware? ",
+ options: [
+       "Shell"
+       "Kernel"
+       "Compiler"
+       "Utility"
+ ],
+ ans: 2
+},
+{
+ id: 8,
+ q: "Which disk scheduling algorithm is also known as the 'elevator algorithm'? ",
+ options: [
+       "SCAN"
+       "FCFS"
+       "SSTF"
+       "C-LOOK"
+ ],
+ ans: 1
+},
+{
+ id: 9,
+ q: "In a file system, what does an 'inode' represent? ",
+ options: [
+       "The physical location of the file on disk"
+       "The name of the file in the directory"
+       "A backup copy of the file"
+       "A data structure containing file metadata"
+ ],
+ ans: 4
+},
+{
+ id: 10
+ q: "Which of the following conditions is NOT required for a deadlock to occur? ",
+ options: [
+       "Hold and Wait"
+       "Mutual Exclusion"
+       "Circular Wait"
+       "Preemption"
+ ],
+ ans: 4
+     }
+],
 
   DSA: [
     {
@@ -72,8 +127,63 @@ const qstn = {
       q: "Which algorithm is used to find shortest path in weighted graph (non-negative)?",
       options: ["DFS", "BFS", "Dijkstra", "Prim"],
       ans: 2
-    }
-  ],
+    },
+    {
+ id: 6
+ q: "Which data structure follows the Last-In-First-Out (LIFO) principle?"
+ options: [
+   "Stack"
+   "Linked List"
+   "Queue"
+   "Binary Tree"
+   ],
+  ans: 1
+},
+{
+ id: 7
+ q: "What is the primary advantage of a Doubly Linked List over a Singly Linked List?"
+ options: [
+    "It uses less memory"
+	"It is simpler to implement"
+	"It has faster access time for random elements"
+	"It allows for bidirectional traversal"
+	],
+	ans: 4
+},
+{
+ id: 8
+ q: "Binary Search can only be applied to data that is:"
+ options: [
+     "Numerical only"
+	 "Stored in a Linked List"
+	 "Sorted"
+	 "Smaller than 100 elements"
+	 ],
+	 ans: 3
+},
+{
+ id: 9
+ q: " Which of the following sorting algorithms has the best worst-case time complexity?"
+ options: [
+     "Bubble Sort"
+	 "Merge Sort"
+	 "Quick Sort"
+	 "Selection Sort"
+	 ],
+	 ans: 2
+},
+{
+ id: 10
+ q: " What is the primary characteristic of a Queue data structure?"
+ options: [
+     "Last-In-First-Out (LIFO)"
+	 "First-In-First-Out (FIFO)"
+	 "Random Access"
+	 "Hierarchical Structure"
+	 ],
+	 ans: 2
+    }  
+],
   
   PYTHON: [
     {
@@ -105,8 +215,63 @@ const qstn = {
       q: "What is the output of: print(type(5))?",
       options: ["<class 'int'>", "<class 'float'>", "<class 'str'>", "Error"],
       ans: 0
+    },
+    {
+ id: 6
+ q: "Which of the following is the correct way to create a list in Python? ",
+ options: [
+    "my_list = [1, 2, 3]"
+    "B.my_list = (1, 2, 3)"
+    "C.my_list = <1, 2, 3>"
+    "D.my_list = {1, 2, 3}"
+ ],
+ ans: 1
+},
+{
+ id: 7
+ q: "What will be the output of print(type(5 / 2))?"
+ options: [
+    "<class 'float'>"
+	"<class 'int'>"
+	"2.5"
+	"<class 'decimal'>"
+	],
+	ans: 1
+},
+{
+ id: 8
+ q: "Which keyword is used to define a function in Python? "
+ options: [
+    "define"
+	"func"
+    "lambda"
+    "def"
+	],
+	ans: 4
+},
+{
+ id: 9
+ q: "What is the purpose of the break statement in a loop?"
+ options: [
+    "To exit the loop immediately"
+    "To pause the loop for a specified time"
+    "To skip the current iteration and move to the next"
+    "To stop the entire program"
+	],
+	ans: 1
+},
+{
+ id: 10
+ q: "Which operator is used for exponentiation (power) in Python?"
+ options: [
+    "^"
+	"pow"
+	"//"
+	"**"
+	],
+	ans: 4
     }
-  ],
+ ],
 
   JAVA: [
     {
