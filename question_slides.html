@@ -13,7 +13,7 @@
         }
         .con {
             margin: 150px auto;
-            background: rgba(255, 255, 255, 0.1);
+            /* background: rgba(255, 255, 255, 0.1); */
             backdrop-filter: blur(10px);
             align-items: center;
             text-align: center;
@@ -40,8 +40,11 @@
             box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
         }
         .avatar {
-            width: 90px;
-            padding: 5%;
+            margin: 25%;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
         }
         .bubble {
             width: 70%;
@@ -76,18 +79,27 @@
             background: transparent;
             border: solid 1px white;
             border-radius: 15px;
-            width: 30%;
+            width: 20%;
             margin: 1% auto;
             padding: 1%;
             color: white;
             text-align: center;
+            margin-top: 3%;
+        }
+        .Next:hover{
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            cursor: pointer;
+            transform: scale(1.02);
+            transition: 0.3s;   
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
         }
     </style>
 </head>
 <body>
     <div class="con">
         <div class="header">
-            <div class="avatar"><img src="https://i.pinimg.com/originals/8f/c9/69/8fc969bacc4ccce997830e75773f7cf4.jpg" alt="lain" width="90px" style="border-radius: 50%;"></div>
+            <div><img src="https://i.pinimg.com/originals/8f/c9/69/8fc969bacc4ccce997830e75773f7cf4.jpg" alt="lain" class="avatar"></div>
             <div class="bubble">Question</div>
         </div>
         <div class="subcon">
@@ -95,10 +107,10 @@
             <div class="sub">B:</div>
             <div class="sub">C:</div>
             <div class="sub">D:</div>
-               
+            <button class="Next">Next</button>
         </div>
         <div>
-            <button class="Next">Next</button>
+            
         </div>
     </div>
     
