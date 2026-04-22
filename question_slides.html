@@ -143,12 +143,7 @@
         }
         options.forEach((opt,index) =>{
             opt.addEventListener('click',() =>{
-                /*options.forEach(o => o.style.background="rgba(0,0,0,0.4)");
-                opt.style.background="green"
-
-                nextbtn.style.display="block";
-                nextbtn.style.opacity="1";*/
-
+                
                 if(answered) return;
                 answered=true;
 
@@ -176,7 +171,10 @@
                 loadquestion();
             }
             else{
-                
+                qstnbox.textContent = `Done! Score: ${score}/${questions.length}`;
+                document.querySelector('.subcon').style.display = "none";
+                nextbtn.style.display = "block";
+
             }
         });
         loadquestion();
