@@ -166,6 +166,11 @@
             });
         });
         nextbtn.addEventListener('click',()=>{
+            if (nextbtn.textContent==="Home"){
+                window.location.href="revise_with_lain.html";
+                return;
+            }
+            
             current++;
             if(current<questions.length){
                 loadquestion();
@@ -175,7 +180,8 @@
                 document.querySelector('.subcon').style.display = "none";
                 nextbtn.style.display = "block";
 
-                nextbtn.textContent = "Home";
+                nextbtn.textContent="Home";
+                
 
             }
         });
