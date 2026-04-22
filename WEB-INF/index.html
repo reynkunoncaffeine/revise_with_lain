@@ -1,1 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <title>Revise With Lain</title>
+    <style>
+        body {
+            background-image: url(https://i.pinimg.com/originals/f0/83/f6/f083f63dfcf3bde7060e4e007311f67f.gif);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Gothic, sans-serif;
+        }
+        .con {
+            margin: 150px auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(3px);
+            align-items: center;
+            text-align: center;
+            width: 70%;
+            border-radius: 15px;
+        }
+        .sub {
+            border: solid 1px white;
+            border-radius: 15px;
+            width: 50%;
+            margin: 1% auto;
+            padding: 1%;
+        }
+        a{
+            color: white;
+            text-decoration: none;
+        }
+        .sub:hover{
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            cursor: pointer;
+            transform: scale(1.03);
+            transition: 0.3s;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.3); 
+        }                      
+        .avatar img:hover{
+            transform: scale(1.1);
+            transition: 0.3s;
+            
+        }
+        .avatar{
+            margin: 25%;
+            border-radius:50%;
+            width: 130px;
+            height: 130px;
+            
+            object-fit: cover;
+        }
+        .bubble {
+            width: 70%;
+            font-size: 1.5em;
+            color: white;
+        }
+        .subcon {
+            
+            align-items: center;
+            padding: 5%;
+        }
+        .header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px 15px 0 0;
+            font-family: 'Special Elite', system-ui;
+        }
+    </style>
+</head>
+<body>
+    <div class="con">
+        <div class="header">
+            <!--
+            <div class="avatar"><img src="https://tr.rbxcdn.com/180DAY-cd19155237a0febe0c0ef68c48b058a4/420/420/FaceAccessory/Webp/noFilter" alt="lain" width="90px" style="border-radius: 50%;"></div>
+            -->
 
+            <div>
+                <img src="https://media.tenor.com/v-d5E2Xnv_sAAAAd/lain-serial-experiments-lain.gif" 
+                alt="lain"
+                class="avatar">
+            </div>
+
+
+            <div class="bubble"><p>welcome to the wired.</p><p>choose a subject to start the quiz</p></div>
+        </div>
+        <div class="subcon">
+            <a href="question_slides.html?subject=OS"><div class="sub">OS</div></a>
+            <a href="question_slides.html?subject=DSA"><div class="sub">DSA</div></a>
+            <a href="question_slides.html?subject=PYTHON"><div class="sub">PYTHON</div></a>
+            <a href="question_slides.html?subject=JAVA"><div class="sub">JAVA</div></a>
+            <a href="question_slides.html?subject=PHYSICS"><div class="sub">PHYSICS</div></a>
+        </div>
+    </div>
+    
+    
+</body>
+</html>
