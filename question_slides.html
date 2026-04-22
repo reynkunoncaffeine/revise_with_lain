@@ -73,7 +73,6 @@
         .Next {
             display: none;
             text-align: center;        
-            opacity: 0;
             transition: 0.5s;
             cursor: pointer;
             background: transparent;
@@ -108,9 +107,6 @@
             <div class="sub">C:</div>
             <div class="sub">D:</div>
             <button class="Next">Next</button>
-        </div>
-        <div>
-            
         </div>
     </div>
     
@@ -177,8 +173,9 @@
             }
             else{
                 qstnbox.textContent = `Done! Score: ${score}/${questions.length}`;
-                document.querySelector('.subcon').style.display = "none";
+                options.forEach(opt => opt.style.display = "none");
                 nextbtn.style.display = "block";
+                nextbtn.style.opacity = "1";
 
                 nextbtn.textContent="Home";
                 
