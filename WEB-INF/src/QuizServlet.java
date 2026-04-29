@@ -20,7 +20,7 @@ public class QuizServlet extends HttpServlet {
     static Map<String, List<Question>> allQuestions = new HashMap<>();
 
     static {
-        // ===== OS QUESTIONS =====
+        //OS QUESTIONS
         List<Question> os = new ArrayList<>();
         os.add(new Question("What is scheduling?",
                 new String[]{"CPU allocation", "Memory management", "Disk management", "None of the above"}, 0));
@@ -33,7 +33,7 @@ public class QuizServlet extends HttpServlet {
         os.add(new Question("Which is a non-preemptive scheduling algorithm?",
                 new String[]{"Round Robin", "SRTF", "First Come First Serve", "Multilevel Queue"}, 2));
 
-        // ===== DSA QUESTIONS =====
+        //DSA QUESTIONS
         List<Question> dsa = new ArrayList<>();
         dsa.add(new Question("Which data structure is used for recursion?",
                 new String[]{"Queue", "Stack", "Heap", "Graph"}, 1));
@@ -46,7 +46,7 @@ public class QuizServlet extends HttpServlet {
         dsa.add(new Question("Which finds shortest path in weighted graph?",
                 new String[]{"DFS", "BFS", "Dijkstra", "Prim"}, 2));
 
-        // ===== PYTHON QUESTIONS =====
+        //PYTHON QUESTIONS
         List<Question> python = new ArrayList<>();
         python.add(new Question("File extension for Python files?",
                 new String[]{".pyth", ".pt", ".pyt", ".py"}, 3));
@@ -59,7 +59,7 @@ public class QuizServlet extends HttpServlet {
         python.add(new Question("Keyword to define function in Python?",
                 new String[]{"define", "func", "lambda", "def"}, 3));
 
-        // ===== JAVA QUESTIONS =====
+        //JAVA QUESTIONS
         List<Question> java = new ArrayList<>();
         java.add(new Question("Keyword to create class in Java?",
                 new String[]{"class", "Class", "struct", "interface"}, 0));
@@ -72,7 +72,7 @@ public class QuizServlet extends HttpServlet {
         java.add(new Question("Keyword for inheritance in Java?",
                 new String[]{"extend", "extends", "inherit", "implements"}, 1));
 
-        // ===== PHYSICS QUESTIONS =====
+        //PHYSICS QUESTIONS
         List<Question> physics = new ArrayList<>();
         physics.add(new Question("SI unit of force?",
                 new String[]{"Joule", "Newton", "Watt", "Pascal"}, 1));
@@ -129,8 +129,6 @@ public class QuizServlet extends HttpServlet {
 
             out.println("<h2>Question " + (current + 1) + "/" + questions.size() + "</h2>");
             out.println("<h2>" + q.q + "</h2>");
-
-            // Hidden span carries the correct answer index — read by the frontend
             out.println("<span id='correctAns' style='display:none'>" + q.ans + "</span>");
 
             out.println("<form method='post' action='QuizServlet'>");
