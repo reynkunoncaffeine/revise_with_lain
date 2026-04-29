@@ -140,7 +140,7 @@ public class QuizServlet extends HttpServlet {
             out.println("</form>");
 
         } else {
-            out.println("<h2>the wired returned: </h2>");
+            out.println("<h2>quiz completed! </h2>");
             out.println("<h2>score: " + score + " / " + questions.size() + "</h2>");
             session.invalidate();
         }
