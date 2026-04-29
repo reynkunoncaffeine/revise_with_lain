@@ -13,13 +13,11 @@
         }
         .con {
             margin: 150px auto;
-            /* background: rgba(255, 255, 255, 0.1); */
             backdrop-filter: blur(10px);
-            align-items: center;
             text-align: center;
             width: 70%;
             border-radius: 15px;
-            padding-bottom:10px;
+            padding-bottom: 10px;
         }
         .sub {
             border: solid 1px white;
@@ -27,16 +25,14 @@
             width: 50%;
             margin: 1% auto;
             padding: 1%;
-            text-align:left;
+            text-align: left;
             color: white;
-            
         }
-        .sub:hover{
+        .sub:hover {
             background: rgba(0, 0, 0, 0.3);
-            color: white;
             cursor: pointer;
             transform: scale(1.03);
-            transition: 0.3s;   
+            transition: 0.3s;
             box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
         }
         .avatar {
@@ -50,47 +46,42 @@
             width: 70%;
             font-size: 1.8em;
             color: white;
-            padding:10px;
-            font-weight:bold;
+            padding: 10px;
+            font-weight: bold;
         }
         .subcon {
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 5%;
-            
         }
         .header {
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.2);
+            justify-content: space-around;
+            background: rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
             padding: 10px;
-            border-radius: 15px 15px 0px 0px;
+            border-radius: 15px 15px 0 0;
+            gap: 15px;
         }
         .Next {
             display: none;
-            text-align: center;        
-            transition: 0.5s;
             cursor: pointer;
             background: transparent;
             border: solid 1px white;
             border-radius: 15px;
             width: 20%;
-            margin: 1% auto;
+            margin: 3% auto 1%;
             padding: 1%;
             color: white;
             text-align: center;
-            margin-top: 3%;
         }
-        .Next:hover{
+        .Next:hover {
             background: rgba(0, 0, 0, 0.3);
-            color: white;
-            cursor: pointer;
             transform: scale(1.02);
-            transition: 0.3s;   
+            transition: 0.3s;
             box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
         }
     </style>
@@ -98,94 +89,119 @@
 <body>
     <div class="con">
         <div class="header">
-            <div><img src="https://i.pinimg.com/originals/8f/c9/69/8fc969bacc4ccce997830e75773f7cf4.jpg" alt="lain" class="avatar"></div>
-            <div class="bubble">Question</div>
+            <div>
+                <img src="https://i.pinimg.com/originals/8f/c9/69/8fc969bacc4ccce997830e75773f7cf4.jpg"
+                     alt="lain" class="avatar">
+            </div>
+            <div class="bubble" id="questionText">loading</div>
         </div>
         <div class="subcon">
-            <div class="sub">A:</div>
-            <div class="sub">B:</div>
-            <div class="sub">C:</div>
-            <div class="sub">D:</div>
-            <button class="Next">Next</button>
+            <div class="sub" id="opt0"></div>
+            <div class="sub" id="opt1"></div>
+            <div class="sub" id="opt2"></div>
+            <div class="sub" id="opt3"></div>
+            <button class="Next" id="nextBtn">Next</button>
         </div>
     </div>
-    
 
-    <script src="subq.js"></script>
-     <script>
-        const params=new URLSearchParams(window.location.search);
-        const subject=params.get("subject");
-        let questions=qstn[subject];
-        let current=0;
-        let score=0;
-        let answered=false;
+    <script>
+        const subject = new URLSearchParams(window.location.search).get("subject");
+        const questionText = document.getElementById("questionText");
+        const opts  = [0,1,2,3].map(i => document.getElementById("opt" + i));
+        const nextBtn = document.getElementById("nextBtn");
 
-        const qstnbox=document.querySelector('.bubble');
-        const options=document.querySelectorAll('.sub');
-        const nextbtn=document.querySelector('.Next');
+        let answered = false;
+        let finished = false;
+        let currentCorrect = -1;
 
-        function loadquestion(){
-            let q=questions[current];
-            qstnbox.textContent=q.q;
+        
+        function parseServletHTML(html) {
+            const doc = new DOMParser().parseFromString(html, "text/html");
+            const h2s = doc.querySelectorAll("h2");
+            const labels = doc.querySelectorAll("label");
 
-            options.forEach((opt,index)=>{
-                opt.textContent=q.options[index];
-                opt.style.background="transparent";
-                opt.style.pointerEvents="auto";
+            if (labels.length === 0) {
                 
-            });
-            answered=false;
+                return {
+                    done:      true,
+                    scoreText: Array.from(h2s).map(h => h.textContent.trim()).join("  ")
+                };
+            }
 
+            return {
+                done:     false,
+                counter:  h2s[0]?.textContent.trim() ?? "",
+                question: h2s[1]?.textContent.trim() ?? "",
+                options:  Array.from(labels).map(l => l.textContent.trim()),
+                correct:  parseInt(doc.getElementById("correctAns")?.textContent ?? "-1")
+            };
         }
-        options.forEach((opt,index) =>{
-            opt.addEventListener('click',() =>{
+
+        
+        function showQuestion(data) {
+            currentCorrect = data.correct;
+            questionText.textContent = data.counter + "  : " + data.question;
+            opts.forEach((o, i) => {
+                o.textContent  = data.options[i] ?? "";
+                o.style.background  = "transparent";
+                o.style.pointerEvents = "auto";
+                o.style.display  = "block";
+            });
+            nextBtn.style.display = "none";
+            nextBtn.onclick       = null;
+            answered = false;
+        }
+
+        
+        function showScore(scoreText) {
+            finished = true;
+            questionText.textContent = scoreText;
+            opts.forEach(o => o.style.display = "none");
+            nextBtn.textContent   = "Home";
+            nextBtn.style.display = "block";
+            nextBtn.onclick   = () => window.location.href = "index.html";
+        }
+
+        
+        opts.forEach((opt, index) => {
+            opt.addEventListener("click", async () => {
+                if (answered || finished) return;
+                answered = true;
+
+                opts.forEach(o => o.style.pointerEvents = "none");
+
                 
-                if(answered) return;
-                answered=true;
-
-                options.forEach(o => o.style.pointerEvents ="none");
-
-                if(index=== questions[current].ans){
-                    opt.style.background="green";
-                    score++;
-                }
-                else{
-                    opt.style.background="red";
-                    options[questions[current].ans].style.background="green";
-                }
+                opts.forEach((o, i) => {
+                    if (i === currentCorrect) o.style.background = "#256b25";
+                    else if (i === index)     o.style.background = "#7d0a0a";
+                });
 
                 
-                nextbtn.style.display="block";
-                nextbtn.style.opacity="1";
-                
+                const res  = await fetch("QuizServlet", {
+                    method:      "POST",
+                    credentials: "same-origin",
+                    headers:   { "Content-Type": "application/x-www-form-urlencoded" },
+                    body:     new URLSearchParams({ ans: index })
+                });
+                const next = parseServletHTML(await res.text());
 
+                nextBtn.style.display = "block";
+                nextBtn.textContent   = "Next";
+                nextBtn.onclick     = () => {
+                    if (next.done) showScore(next.scoreText);
+                    else          showQuestion(next);
+                };
             });
         });
-        nextbtn.addEventListener('click',()=>{
-            if (nextbtn.textContent==="Home"){
-                window.location.href="index.html";
-                return;
-            }
-            
-            current++;
-            if(current<questions.length){
-                loadquestion();
-            }
-            else{
-                qstnbox.textContent = `Done! Score: ${score}/${questions.length}`;
-                options.forEach(opt => opt.style.display = "none");
-                nextbtn.style.display = "block";
-                nextbtn.style.opacity = "1";
 
-                nextbtn.textContent="Home";
-                
-
-            }
-        });
-        loadquestion();
-
-
+        
+        (async () => {
+            const res  = await fetch("QuizServlet?subject=" + encodeURIComponent(subject),
+                                     { credentials: "same-origin" });
+            const data = parseServletHTML(await res.text());
+            if (data.done) showScore(data.scoreText);
+            else           showQuestion(data);
+        })();
     </script>
-    
 </body>
 </html>
